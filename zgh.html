@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Zorin Group Home</title>
+	<link rel="shortcut icon" type="image/png" href="https://zorin.com/apple-touch-icon.png">
+	
+<style>
+body {
+	background-image: url('0backgroundImages/b.PNG');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	/*background-size: 100%;*/
+	background-color: black;
+	color: #555;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+    /*overflow: hidden;*/
+		
+margin:0;
+
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+img {
+    border-radius: 13%;
+    border-color: #555;
+}
+
+iframe {
+    border-radius: 13px;
+    border: 1px solid white;
+}
+
+.iframeView {
+    height: 70vh; /* Viewport-relative units */
+    width: 83vw;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /*background-color: #0d0d0d;*/
+  background: rgba(67, 67, 67, 0.3);  
+  position: fixed;
+  top: 0;
+  width: 100%;
+ 
+  text-align: center; 
+  
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: red;
+}
+
+.active {
+  background-color: red;
+}
+
+
+
+.brightness {
+    display: inline-block;
+
+}
+.brightness img:hover {
+    opacity: .5;
+}
+
+
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  /*background-color: rgb(0,0,0);*/
+  /*background-color: rgba(0,0,0, 0.8);*/
+  background-color: rgba(0,0,0, 0.3);
+  overflow-x: hidden;
+  transition: 0.5s;
+  margin-top: 4.7%;  
+}
+
+.overlay-content {
+  position: relative;
+  top: 0%;
+  width: 100%;
+  text-align: left;
+  margin-top: 0px;
+  padding-bottom: 5.5%;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: #818181;
+  display: inline;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 45px;
+  right: 125px;
+  font-size: 60px;
+  display: none;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
+
+
+
+input {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  padding: 0.4%;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: none;
+  font-size: 88%;
+  font-style: none;
+  min-width: 20%;
+  border-radius: 13px;
+}
+
+/* Style the search field */
+form.bar input[type=text] {
+  padding: 0.4%;
+  font-size: 88%;
+  border: 1px solid white;
+  width: 50%;
+  background: black;
+  color: white;
+  border-radius: 13px;
+}
+
+/* Style the submit button */
+form.bar button {
+  float: left;
+  width: 30%;
+  background: black;
+  color: white;
+  padding: 0.5%;
+  font-size: 88%;
+  border: 1px solid #555;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.bar button:hover {
+  background: black;
+  color: #555;
+}
+
+/* Clear floats */
+form.bar::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+
+/* Safari syntax */
+:-webkit-full-screen {
+
+}
+
+/* IE11 */
+:-ms-fullscreen {
+
+}
+
+/* Standard syntax */
+:fullscreen {
+
+}
+
+/* Style the button */
+button {
+  padding: 20px;
+  font-size: 13px;
+  border: 1px solid #555; 
+  border-radius: 13%;
+}
+
+
+
+</style>
+
+	<script language="javascript" type="text/javascript">
+    function clock() {
+    var date = new Date()
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1 // To correct the month.
+    var day = date.getDate()
+    var hour = date.getHours()
+    var minute = date.getMinutes()
+    var second = date.getSeconds()
+    var months = new Array("", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC") // Use monthname to display JAN instead of 1.
+    var monthname = months[month]
+    //if (hour > 12) {hour = hour - 12}  // Use to remove 24 hour time.
+    if (minute < 10) {minute = "0" + minute}
+    if (second < 10) {second = "0" + second}
+
+    var days = date.getDay()
+
+    //var daysnames = new Array("Su", "Mo", "Tu", "We", "Th", "Fr", "Sa")
+    //var daysnames = new Array("Sun", "Mon", "Tues", "Wed", "Thrus", "Fri", "Sat")
+    var daysnames = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday")
+
+    var daysname = daysnames[days]
+	
+    //document.title = day + " " + monthname + " " + year + " - " + hour + ":" + minute + ":" + second
+    //document.title = "ZGH - " + day + "/" + month + "/" + year + " - " + hour + ":" + minute + " --- " + second + " - " + daysname
+    document.title = "ZGH - " + day + "/" + month + "/" + year + " - " + hour + ":" + minute + " ---------- " + second + " - " + daysname	
+	
+    setTimeout(clock, 1000)
+		
+    }
+
+
+
+
+        
+function openNavSearch() {
+  //document.getElementById("myNavNews").style.width = "100%";
+  var el = document.getElementById("myNavSearch");
+  el.style.width = window.getComputedStyle(el).width === "0px" ? "100%" : "0%";  
+}
+
+function closeNavSearch() {
+  document.getElementById("myNavNewsSearch").style.width = "0%";
+}
+
+
+
+var elem = document.documentElement;
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+}
+
+
+function openNavHomeMenu() {
+  //document.getElementById("myNavHomeMenu").style.width = "100%";
+  var el = document.getElementById("myNavHomeMenu");
+  el.style.width = window.getComputedStyle(el).width === "0px" ? "100%" : "0%";  
+}
+
+function closeNavHomeMenu() {
+  document.getElementById("myNavHomeMenu").style.width = "0%";
+}
+
+
+
+function openNavBookmarks() {
+  //document.getElementById("myNavBookmarks").style.width = "100%";
+  var el = document.getElementById("myNavBookmarks");
+  el.style.width = window.getComputedStyle(el).width === "0px" ? "100%" : "0%";  
+}
+
+function closeNavBookmarks() {
+  document.getElementById("myNavBookmarks").style.width = "0%";
+}
+
+
+
+function closeAll() {
+
+closeNavHomeMenu();
+closeNavBookmarks();
+
+}
+
+
+	
+    </script>
+	
+</head>
+
+<body onLoad="clock();openNavBookmarks()">
+
+<ul>
+  <li></li>
+
+<div class="brightness">
+   
+        <!-- Navigation -->
+		
+		<!-- Home Page + -->
+		<img onclick="openNavHomeMenu()" src="https://store-images.s-microsoft.com/image/apps.15017.14160440942120591.ad3631ca-3e4a-4ea6-ada1-83a7d2601d0a.41a5c65a-f586-4f19-9e48-8f50a5cdaa93?mode=scale&q=90&h=270&w=270&background=%230078D7" title="Home" alt="Home Logo" border="1%" width="5%" height="5%" hspace="1%" vspace="1%" align="left top" style="filter: grayscale(100%);">
+
+
+        <!-- Bookmarks -->
+	    <img onclick="openNavBookmarks()" src="https://store-images.s-microsoft.com/image/apps.52292.13544895817205913.cb62b68f-7127-438a-932b-977ffae5eb97.d1111dad-636d-4a9e-9ab4-c241e1872b9b?h=307" title="Bookmarks" alt="Bookmarks Logo" border="1%" width="5%" height="5%" hspace="1%" vspace="1%" align="left top" style="filter: grayscale(100%);">		
+
+        
+        <!-- Search Page -->
+	 	<img onclick="openNavSearch()" src="https://store-images.s-microsoft.com/image/apps.56073.14057093786499181.5a438b50-2bad-44ae-a417-5b7ab109354f.d8300e0a-0fec-49f9-8339-413f9ca5e074?mode=scale&q=90&h=270&w=270&background=%233366ff" title="Search" alt="Search" align="left top" border="1%" width="5%" height="5%" hspace="1%" vspace="1%" style="filter: grayscale(100%);">
+
+    
+</div>
+
+</ul>
+
+
+
+<!-- Shortcuts Here: -->
+<div class="brightness">
+
+<br>
+<br>
+<br>
+<br>
+
+<!-- Invisable Tools -->
+<div style="display: none">
+
+
+
+</div>
+	
+
+	
+</div>
+
+
+
+
+
+<script>
+
+
+
+
+
+</script>
+
+</div>
+
+  </div>
+  
+</div>
+
+
+
+<!-- Bookmarks: -->
+<div id="myNavBookmarks" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNavBookmarks()">&times;</a>
+  <div class="overlay-content">
+
+<div class="brightness" style="padding: 0% 10% 0% 10%">
+	
+        <!-- Main Websites --> 
+	
+      	<!-- Zorin OS -->
+		<a href="https://zorin.com/os/" target="_blank"><img src="https://zorin.com/apple-touch-icon.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Zorin OS" alt="Zorin OS"></a>
+
+      	<!-- Zorin Blog -->
+		<a href="https://blog.zorin.com/" target="_blank"><img src="https://forum.zorin.com/uploads/default/original/1X/15b90230b100228843daf0ea4787c7c84805fdd4.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Zorin Blog" alt="Zorin Blog" style="background-color: #00ccff;"></a>
+
+      	<!-- Zorin Forum -->
+		<a href="https://forum.zorin.com/" target="_blank"><img src="https://forum.zorin.com/uploads/default/original/1X/b6ade382fd85ddc8d3a522c741886bdaf9f02f64.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Zorin Forum" alt="Zorin Forum" style="background-color: #00ccff;"></a>
+
+      	<!-- Zorin Help -->
+		<a href="https://help.zorin.com/" target="_blank"><img src="https://forum.zorin.com/uploads/default/original/1X/b16c2a031c9b4b49c1f754f08fd9ff036e218358.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Zorin Help" alt="Zorin Help" style="background-color: #00ccff;"></a>
+
+      	<!-- Zorin Docs -->
+		<a href="https://help.zorin.com/docs/" target="_blank"><img src="https://forum.zorin.com/uploads/default/original/1X/85ffcf5314b7fecd1c9cf54e3312964774ada511.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Zorin Docs" alt="Zorin Docs" style="background-color: #00ccff;"></a>
+
+      	<!-- Zorin System Requirements -->
+		<a href="https://help.zorin.com/docs/getting-started/system-requirements/" target="_blank"><img src="https://assets.zorincdn.com/help.zorin.com/images/icons/requirements.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Zorin System Requirements" alt="Zorin System Requirements" style="background-color: #00ccff;"></a>
+
+      	<!-- Zorin Install -->
+		<a href="https://help.zorin.com/docs/getting-started/install-zorin-os/" target="_blank"><img src="https://assets.zorincdn.com/help.zorin.com/images/icons/install.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Zorin Install" alt="Zorin Install" style="background-color: #00ccff;"></a>
+
+      	<!-- Zorin Delivery Server -->
+		<a href="https://delivery.zorin.com/admin" target="_blank"><img src="https://assets.zorincdn.com/help.zorin.com/images/icons/network-drive.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Zorin Delivery Server" alt="Zorin Delivery Server" style="background-color: #00ccff;"></a>
+
+      	<!-- Zorin Desk -->
+		<a href="https://zoringroup.freshdesk.com/support/login" target="_blank"><img src="https://play-lh.googleusercontent.com/LsnpQfmSWaFRX3gydJdUD0acK6SdwgHywk5Jb2Nt8MMXiVXsiz1qXkQhNEY0v8ZedQ=w240-h480-rw" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Zorin Desk" alt="Zorin Desk"></a>
+
+      	<!-- Proton Mail -->
+		<a href="https://account.proton.me/mail" target="_blank"><img src="https://mail.proton.me/assets/apple-touch-icon-1024x1024.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Proton Mail" alt="Proton Mail"></a>
+
+      	<!-- Proton Drive -->
+		<a href="https://drive.proton.me/" target="_blank"><img src="https://drive.proton.me/assets/apple-touch-icon-1024x1024.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Proton Drive" alt="Proton Drive"></a>
+
+      	<!-- Proton Calendar -->
+		<a href="https://calendar.proton.me/" target="_blank"><img src="https://calendar.proton.me/assets/apple-touch-icon-1024x1024.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Proton Calendar" alt="Proton Calendar"></a>
+
+      	<!-- Proton Docs -->
+		<a href="https://docs.proton.me/" target="_blank"><img src="https://docs.proton.me/assets/apple-touch-icon-1024x1024.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Proton Docs" alt="Proton Docs"></a>
+
+      	<!-- Google -->
+		<a href="https://www.google.com" target="_blank"><img src="https://play-lh.googleusercontent.com/aFWiT2lTa9CYBpyPjfgfNHd0r5puwKRGj2rHpdPTNrz2N9LXgN_MbLjePd1OTc0E8Rl1=w240-h480-rw" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Google" alt="Google"></a>
+
+      	<!-- Google Translate -->
+		<a href="https://translate.google.com" target="_blank"><img src="https://play-lh.googleusercontent.com/ZrNeuKthBirZN7rrXPN1JmUbaG8ICy3kZSHt-WgSnREsJzo2txzCzjIoChlevMIQEA=w240-h480-rw" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Google Translate" alt="Google Translate" style="background-color: #00ccff;"></a>
+
+      	<!-- VirusTotal -->
+		<a href="https://www.virustotal.com/gui/home/url" target="_blank"><img src="https://www.virustotal.com/gui/images/manifest/icon-192x192.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="VirusTotal" alt="VirusTotal" style="background-color: #00ccff;"></a>
+
+      	<!-- YouTube -->
+		<a href="https://www.youtube.com/" target="_blank"><img src="https://play-lh.googleusercontent.com/6am0i3walYwNLc08QOOhRJttQENNGkhlKajXSERf3JnPVRQczIyxw2w3DxeMRTOSdsY=s256-rw" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="YouTube" alt="YouTube"></a>
+
+      	<!-- Ecosia Chat -->
+		<a href="https://www.ecosia.org/chat?q=chat" target="_blank"><img src="https://www.ecosia.org/static/icons/apple-touch-icon.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Ecosia Chat" alt="Ecosia Chat" style="background-color: #00ccff;"></a>
+		
+      	<!-- DuckDuckGo Chat -->
+		<a href="https://duckduckgo.com/?q=DuckDuckGo+AI+Chat&ia=chat" target="_blank"><img src="https://duckduckgo.com/assets/icons/meta/DDG-icon_256x256.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="DuckDuckGo Chat" alt="DuckDuckGo Chat" style="background-color: #00ccff;"></a>
+
+      	<!-- Zorin OS on Distrosea -->
+		<a href="https://distrosea.com/select/zorin/" target="_blank"><img src="https://zorin.com/apple-touch-icon.png" align="left top" border="1%" hspace="1%" vspace="1%" width="10%" height="10%" title="Zorin OS Distrosea" alt="Zorin OS Distrosea" style="filter: grayscale(100%);"></a>
+   												
+	
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</div>
+
+  </div>
+  
+</div>
+
+
+
+<!-- Search: -->
+<div id="myNavSearch" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNavSearch()">&times;</a>
+  <div class="overlay-content">
+
+<div class="brightness" style="padding: 0% 10% 0% 10%">  
+
+    
+
+<div style="padding: 0% 0% 0% 10%; font-size: 33px;">
+
+	    <!-- Ecosia -->
+        <form class="bar" action = "https://www.ecosia.org/search" target="_blank" method = "GET" align="left">
+            <input type = "text" name="q" placeholder = "">
+		    <input type = "submit" value = "Ecosia">
+	    </form>
+        <br>
+	    <!-- Ecosia Images -->
+        <form class="bar" action = "https://www.ecosia.org/images" target="_blank" method = "GET" align="left">
+            <input type = "text" name="q" placeholder = "">
+		    <input type = "submit" value = "Ecosia Images">
+	    </form>
+        <br>
+	    <!-- Google -->
+        <form class="bar" action = "https://www.google.com/search" target="_blank" method = "GET" align="left">
+            <input type = "text" name="q" placeholder = "">
+		    <input type = "submit" value = "Google">
+	    </form>
+        <br>	
+	    <!-- Google Images -->
+        <form class="bar" action = "https://www.google.com/imghp" target="_blank" method = "GET" align="left">
+            <input type = "text" name="q" placeholder = "">
+		    <input type = "submit" value = "Google Images">
+	    </form>
+		<br>
+ 		<!-- Wikipedia -->
+        <form class="bar" action = "https://en.wikipedia.org/w/index.php?relevance%26" target="_blank" method = "GET" align="left">
+            <input type = "text" name="search" placeholder = "">
+		    <input type = "submit" value = "Wikipedia">
+	    </form>
+		<br>		
+	    <!-- YouTube -->
+        <form class="bar" action = "https://www.youtube.com/results?search" target="_blank" method = "GET" align="left">
+            <input type = "text" name="q" placeholder = "">
+		    <input type = "submit" value = "YouTube">
+	    </form>
+
+</div>
+		
+
+</div>
+
+  </div>
+  
+</div>
+    
+
+
+<!-- Home Menu: -->
+<div id="myNavHomeMenu" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNavHomeMenu()">&times;</a>
+  <div class="overlay-content">
+
+<div class="brightness">
+
+<div style="padding: 0% 10% 0% 10%">
+
+
+<img onclick="openFullscreen(); closeFullscreen();" src="https://store-images.microsoft.com/image/apps.40625.13510798883037681.d61cb27f-b1d3-494d-8a61-21de221ec3e5.898903b5-a65e-4d28-b2e9-03288b70e3c7?w=162&h=162&q=90&mode=crop" title="Fullscreen" alt="Fullscreen" border="1%" width="7%" height="7%" hspace="1%" vspace="1%" align="left top">
+
+<br>
+<br>   
+
+<button type="button" onclick="setBackgroundImage1()"><img src="https://www.bing.com/th?id=OHR.Perihelion_ROW2782036050_1920x1080.jpg" width="100px;" height="55px;"></button>
+
+<button type="button" onclick="setBackgroundImage2()"><img src="https://www.bing.com/th?id=OHR.MineralMoon_ROW8248353552_1920x1080.webp" width="100px;" height="55px;"></button>
+
+<button type="button" onclick="setBackgroundImage3()"><img src="https://www.bing.com/th?id=OHR.MoonPhases_ROW6248327786_1920x1080.jpg" width="100px;" height="55px;"></button>
+
+<button type="button" onclick="setBackgroundImage4()"><img src="https://www.bing.com/th?id=OHR.RedPlanetDay_ROW4595270931_1920x1080.jpg" width="100px;" height="55px;"></button>
+
+<button type="button" onclick="setBackgroundImage5()"><img src="https://www.bing.com/th?id=OHR.BrilliantBlue_ROW4595544215_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" width="100px;" height="55px;"></button>
+
+<button type="button" onclick="setBackgroundImage6()"><img src="https://www.bing.com/th?id=OHR.LongsPeak_ROW9098186381_1920x1080.jpg" width="100px;" height="55px;"></button>
+
+<button type="button" onclick="setBackgroundImage7()"><img src="https://www.bing.com/th?id=OHR.MilkyWayTwoJackLake_ROW0791032627_1920x1080.jpg" width="100px;" height="55px;"></button>
+
+<button type="button" onclick="setBackgroundImage8()"><img src="https://www.bing.com/th?id=OHR.LakeTahoeRock_ROW4668263342_1920x1080.webp" width="100px;" height="55px;"></button>
+
+<button type="button" onclick="setBackgroundImage9()"><img src="https://www.bing.com/th?id=OHR.ArambolBeach_ROW5801779063_1920x1080.jpg" width="100px;" height="55px;"></button>
+
+<button type="button" onclick="setBackgroundImage10()"><img src="https://www.bing.com/th?id=OHR.AtigunPassAurora_ROW5088889802_1920x1080.jpg&rf=LaDigue_1920x1080.jpg" width="100px;" height="55px;"></button>
+
+<br>
+<br>
+
+<input type="text" id="urlBackgroundEntered" placeholder="URL Background Image">
+<button onclick="urlCustBack()" style="background-color: black; color: white; border: 1px solid white; border-radius: 13px;">Apply</button>
+
+<br>
+<br>
+
+<input type="file" onchange="previewFile(this);">
+
+<br>
+<br>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</div>
+
+<script>
+
+function setBackgroundImage1() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.backgroundImage = "url('https://www.bing.com/th?id=OHR.Perihelion_ROW2782036050_1920x1080.jpg')";
+}
+
+function setBackgroundImage2() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.backgroundImage = "url('https://www.bing.com/th?id=OHR.MineralMoon_ROW8248353552_1920x1080.webp')";
+}
+
+function setBackgroundImage3() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.backgroundImage = "url('https://www.bing.com/th?id=OHR.MoonPhases_ROW6248327786_1920x1080.jpg')";
+}
+
+function setBackgroundImage4() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.backgroundImage = "url('https://www.bing.com/th?id=OHR.RedPlanetDay_ROW4595270931_1920x1080.jpg')";
+}
+
+function setBackgroundImage5() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.backgroundImage = "url('https://www.bing.com/th?id=OHR.BrilliantBlue_ROW4595544215_1920x1080.jpg&rf=LaDigue_1920x1080.jpg')";
+}
+
+function setBackgroundImage6() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.backgroundImage = "url('https://www.bing.com/th?id=OHR.LongsPeak_ROW9098186381_1920x1080.jpg')";
+}
+
+function setBackgroundImage7() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.backgroundImage = "url('https://www.bing.com/th?id=OHR.MilkyWayTwoJackLake_ROW0791032627_1920x1080.jpg')";
+}
+
+function setBackgroundImage8() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.backgroundImage = "url('https://www.bing.com/th?id=OHR.LakeTahoeRock_ROW4668263342_1920x1080.webp')";
+}
+
+function setBackgroundImage9() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.backgroundImage = "url('https://www.bing.com/th?id=OHR.ArambolBeach_ROW5801779063_1920x1080.jpg')";
+}
+
+function setBackgroundImage10() {
+  document.body.style.backgroundColor = "black";
+  document.body.style.backgroundImage = "url('https://www.bing.com/th?id=OHR.AtigunPassAurora_ROW5088889802_1920x1080.jpg&rf=LaDigue_1920x1080.jpg')";
+}
+
+
+
+function urlCustBack() {
+  document.body.style.backgroundColor = "black";
+  var urlBackgroundEntered = document.getElementById("urlBackgroundEntered").value;
+  document.body.style.backgroundImage = "url('" + urlBackgroundEntered +"')";
+}
+
+
+function previewFile(fileInput) {
+  var file = fileInput.files[0];
+  var reader = new FileReader();
+
+  reader.addEventListener("load", function() {
+    setBackground(reader.result);
+  }, false);
+
+  if (file) {
+    reader.readAsDataURL(file);
+  }
+}
+function setBackground(imageURL){
+    document.body.style.backgroundImage = "url(" + imageURL + ")";
+    document.body.style.backgroundSize = "cover";
+    document.body.style.backgroundRepeat = "no-repeat";
+    document.body.style.backgroundPosition = "center";
+}
+
+
+
+</script>
+
+
+
+</body>
+
+
+
+
+
+</html>
