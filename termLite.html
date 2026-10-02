@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terminal Lite</title>
+	<link rel="shortcut icon" type="image/png" href="https://play-lh.googleusercontent.com/m3oqSZCwmitiZ-Im-CQu_rqT5eLHilOp5IudBynv3COJUumFzuQaP2dgTDxRL_03f4x2=s180-rw">	
+    <style>
+	
+::-webkit-scrollbar {
+    display: none;
+}
+	
+#mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: none;
+  border: 1px solid white;
+  border-radius: 13px;
+  text-align: center;
+  padding: 10px 37px 20px 17px;
+}
+
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: none;
+  color: white;
+}		
+	
+    body{
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    background-attachment: fixed;
+	    background-size: cover;
+	    /*background-size: 100%;*/
+	    background-color: black;
+		color: white;
+    }
+	img {
+    border-radius: 13%;
+    border-color: #555;
+    }
+	button {
+        background-color: black;
+        border: 1px solid white;
+        color: white;
+        padding: 1%;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: none;
+        font-size: 88%;
+        font-style: none;
+        max-width: 20.8%;
+        min-width: 20.8%;		
+        border-radius: 13px;
+	}
+	input {
+        background-color: black;
+        border: 1px solid white;
+        color: white;
+        padding: 0.7%;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: none;
+        font-size: 88%;
+        font-style: none;
+        max-width: 19.3%;
+        min-width: 19.3%;	
+        border-radius: 13px;
+	}			
+	
+    </style>	
+</head>
+
+<body>
+
+<!-- Draggable DIV -->
+<div id="mydiv">
+  <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+  <div id="mydivheader"></div>
+
+<div style="resize: both; overflow: auto; font-size: 18px; padding: 3%; width: 307px; height: 450px; background: black; color: white; border: 1px solid #555; border-radius: 13px;"> 
+    JMC Terminal:
+	<!-- <button onClick="window.location.reload();" style="border: none;">Refresh Page</button> -->
+    <br>
+	<!-- <input id="inputTerminal" placeholder="" style="font-size: 18px; border: 1px solid #555; border-radius: 13px; background: black; color: white;"></input> -->
+	<textarea id="inputTerminal" placeholder="" style="font-size: 18px; width: 300px; height: 400px; border: 1px solid #555; border-radius: 13px; background: black; color: white;"></textarea>
+</div>
+
+<button onclick="saveInput()">Enter</button>
+
+</div>
+
+</body>
+
+<script>
+
+// Make the DIV element draggable:
+dragElement(document.getElementById("mydiv"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+
+
+// Arrow Keys
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '13') {
+        // ENTER
+		saveInput();
+    }
+    else if (e.keyCode == '16') {
+        // SHIFT
+		window.location.reload();
+    }
+}
+
+
+
+function saveInput() {
+
+
+    // Change Colours:
+
+/*	
+	if (document.getElementById("inputTerminal").value == "" || document.getElementById("inputTerminal").value == "") {
+	    document.body.style.backgroundColor = "none";
+	}
+*/
+
+	if (document.getElementById("inputTerminal").value == "White" || document.getElementById("inputTerminal").value == "white") {
+	    document.body.style.backgroundColor = "white";
+		document.getElementById("mydiv").style.backgroundColor = "white";
+        document.getElementById("inputTerminal").style.backgroundColor = "white";
+        document.getElementById("inputTerminal").style.color = "black";		
+	}
+
+	if (document.getElementById("inputTerminal").value == "Black" || document.getElementById("inputTerminal").value == "black") {
+	    document.body.style.backgroundColor = "black";
+		document.getElementById("mydiv").style.backgroundColor = "black";
+        document.getElementById("inputTerminal").style.backgroundColor = "black";
+	}
+
+	if (document.getElementById("inputTerminal").value == "Red" || document.getElementById("inputTerminal").value == "red") {
+	    document.body.style.backgroundColor = "red";
+		document.getElementById("mydiv").style.backgroundColor = "red";
+        document.getElementById("inputTerminal").style.backgroundColor = "red";
+	}
+
+	if (document.getElementById("inputTerminal").value == "Blue" || document.getElementById("inputTerminal").value == "blue") {
+	    document.body.style.backgroundColor = "blue";
+		document.getElementById("mydiv").style.backgroundColor = "blue";
+        document.getElementById("inputTerminal").style.backgroundColor = "blue";
+	}		
+ 
+	if (document.getElementById("inputTerminal").value == "Green" || document.getElementById("inputTerminal").value == "green") {
+	    document.body.style.backgroundColor = "green";
+		document.getElementById("mydiv").style.backgroundColor = "green";
+        document.getElementById("inputTerminal").style.backgroundColor = "green";
+	} 	
+
+	if (document.getElementById("inputTerminal").value == "Yellow" || document.getElementById("inputTerminal").value == "yellow") {
+	    document.body.style.backgroundColor = "yellow";
+		document.getElementById("mydiv").style.backgroundColor = "yellow";
+        document.getElementById("inputTerminal").style.backgroundColor = "yellow";
+	}
+
+	if (document.getElementById("inputTerminal").value == "Orange" || document.getElementById("inputTerminal").value == "orange") {
+	    document.body.style.backgroundColor = "orange";
+		document.getElementById("mydiv").style.backgroundColor = "orange";
+        document.getElementById("inputTerminal").style.backgroundColor = "orange";
+	}
+
+	if (document.getElementById("inputTerminal").value == "Purple" || document.getElementById("inputTerminal").value == "purple") {
+	    document.body.style.backgroundColor = "purple";
+		document.getElementById("mydiv").style.backgroundColor = "purple";
+        document.getElementById("inputTerminal").style.backgroundColor = "purple";
+	}
+	
+	if (document.getElementById("inputTerminal").value == "Pink" || document.getElementById("inputTerminal").value == "pink") {
+	    document.body.style.backgroundColor = "hotpink";
+		document.getElementById("mydiv").style.backgroundColor = "hotpink";
+        document.getElementById("inputTerminal").style.backgroundColor = "hotpink";
+	}
+
+	if (document.getElementById("inputTerminal").value == "Random" || document.getElementById("inputTerminal").value == "random") {
+    
+    var myArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+    setInterval(function () {
+    var rand = myArray[Math.round(Math.random() * (myArray.length - 1))];
+    var rand1 = myArray[Math.round(Math.random() * (myArray.length - 1))];
+    var rand2 = myArray[Math.round(Math.random() * (myArray.length - 1))];
+    var rand3 = myArray[Math.round(Math.random() * (myArray.length - 1))];
+    var rand4 = myArray[Math.round(Math.random() * (myArray.length - 1))];
+    var rand5 = myArray[Math.round(Math.random() * (myArray.length - 1))];  
+    //document.body.style.background= '#'+rand+rand1+rand2+rand3+rand4+rand5;
+    setTimeout(function () {
+      var rand = myArray[Math.round(Math.random() * (myArray.length - 1))];
+      var rand1 = myArray[Math.round(Math.random() * (myArray.length - 1))];
+      var rand2 = myArray[Math.round(Math.random() * (myArray.length - 1))];
+      var rand3 = myArray[Math.round(Math.random() * (myArray.length - 1))];
+      var rand4 = myArray[Math.round(Math.random() * (myArray.length - 1))];
+      var rand5 = myArray[Math.round(Math.random() * (myArray.length - 1))];  
+      document.body.style.backgroundColor= '#'+rand+rand1+rand3+rand2+rand4+rand5;
+	  document.getElementById("mydiv").style.backgroundColor = '#'+rand+rand1+rand3+rand2+rand4+rand5;
+      document.getElementById("inputTerminal").style.backgroundColor = '#'+rand+rand1+rand3+rand2+rand4+rand5;  
+      }, 1000);   
+    }, 1000);
+ 
+    }
+
+
+
+// External Websites:
+
+
+    //  Game Stores All:
+	
+	if (document.getElementById("inputTerminal").value == "Gs" || document.getElementById("inputTerminal").value == "gs") {
+		
+		window.open('https://www.nintendo.co.uk/');
+		
+		window.open('https://store.playstation.com/');
+
+		window.open('https://www.xbox.com/');
+
+		window.open('https://www.microsoft.com/en-ie/store/games/windows?icid=CNavGamesWindowsGames');
+
+		window.open('https://www.humblebundle.com/store');
+
+		window.open('https://store.steampowered.com');
+
+		window.open('https://www.origin.com/irl/en-us/store');
+
+		window.open('https://store.ubi.com/eu/home');
+
+		window.open('https://www.gog.com');
+
+		window.open('https://www.epicgames.com/store/en-US/');
+
+		window.open('https://play.google.com/store/apps/');
+
+		window.open('https://stadia.google.com/home');
+
+	}
+
+
+    //  Google:
+	
+	if (document.getElementById("inputTerminal").value == "Goo" || document.getElementById("inputTerminal").value == "goo") {
+		
+		window.open('https://www.youtube.com/');
+		window.open('https://mail.google.com/');
+		window.open('https://www.google.com/docs/about/');
+		window.open('https://photos.google.com/');
+		window.open('https://drive.google.com/');
+		window.open('https://play.google.com/store/apps/');
+		window.open('https://stadia.google.com/home');
+				
+    }
+
+
+    //  Microsoft:
+	
+	if (document.getElementById("inputTerminal").value == "Ms" || document.getElementById("inputTerminal").value == "ms") {
+		
+		window.open('https://www.msn.com/en-ie');
+		window.open('https://www.office.com/');
+		window.open('https://products.office.com/en-ie/onedrive/online-cloud-storage');
+		window.open('https://www.microsoft.com/en-ie/store/games/windows?icid=CNavGamesWindowsGames');
+		window.open('https://www.xbox.com/');
+				
+    }
+
+
+
+    //  Everyday Check:
+	
+	if (document.getElementById("inputTerminal").value == "Ed" || document.getElementById("inputTerminal").value == "ed") {
+		
+		window.open('https://www.youtube.com/');
+		
+		window.open('https://www.bing.com/');
+
+		window.open('https://www.xbox.com/');
+
+		window.open('https://www.microsoft.com/en-ie/store/games/windows?icid=CNavGamesWindowsGames');
+
+		window.open('https://www.humblebundle.com/store');
+
+		window.open('https://store.steampowered.com');
+
+		window.open('https://www.origin.com/irl/en-us/store');
+
+		window.open('https://store.ubi.com/eu/home');
+
+		window.open('https://www.gog.com');
+
+		window.open('https://www.epicgames.com/store/en-US/');
+
+		window.open('https://play.google.com/store/apps/');
+
+	}
+
+
+
+    //  Bings:
+	
+	if (document.getElementById("inputTerminal").value == "Bings" || document.getElementById("inputTerminal").value == "bings") {
+		
+		window.open('https://www.bing.com/search?q=time');
+		
+		window.open('https://www.bing.com/search?q=calculator');
+
+		window.open('https://www.bing.com/search?q=unit+converter');
+
+		window.open('https://www.bing.com/search?q=currency+converter');
+
+		window.open('https://www.bing.com/search?q=weather');
+
+		window.open('https://www.bing.com/search?q=bing+maps');
+
+		window.open('https://www.bing.com/search?q=bing+translator');
+
+		window.open('https://www.bing.com/search?q=microsoft+math+solver');
+
+		window.open('https://www.bing.com/search?q=microsoft+office');
+
+		window.open('https://www.bing.com/search?q=microsoft+word');
+
+		window.open('https://www.bing.com/search?q=microsoft+excel');
+
+		window.open('https://www.bing.com/search?q=microsoft+powerpoint');
+
+		window.open('https://www.bing.com/search?q=microsoft+onedrive');
+
+		window.open('https://www.bing.com/search?q=microsoft+outlook');
+
+		window.open('https://www.bing.com/search?q=microsoft+teams');
+
+		window.open('https://www.bing.com/search?q=visual+studio');
+
+		window.open('https://www.bing.com/search?q=visual+studio+code');
+
+		window.open('https://www.bing.com/search?q=windows+10');
+
+		window.open('https://www.bing.com/search?q=windows+11');
+
+		window.open('https://www.bing.com/search?q=microsoft+edge');
+
+		window.open('https://www.bing.com/search?q=microsoft+store');
+
+		window.open('https://www.bing.com/search?q=xbox');
+
+		window.open('https://www.bing.com/search?q=playstation');
+
+		window.open('https://www.bing.com/search?q=nintendo');
+		
+		window.open('https://www.bing.com/search?q=steam');
+		
+		window.open('https://www.bing.com/search?q=gog');
+		
+		window.open('https://www.bing.com/search?q=humblebundle');
+		
+		window.open('https://www.bing.com/search?q=google+play');		
+		
+		window.open('https://www.bing.com/search?q=google+maps');
+
+		window.open('https://www.bing.com/search?q=google+translate');
+
+		window.open('https://www.bing.com/search?q=google+workspace');
+
+		window.open('https://www.bing.com/search?q=google+docs');
+
+		window.open('https://www.bing.com/search?q=google+sheets');
+
+		window.open('https://www.bing.com/search?q=google+slides');
+
+		window.open('https://www.bing.com/search?q=google+photos');
+
+		window.open('https://www.bing.com/search?q=google+drive');
+
+		window.open('https://www.bing.com/search?q=gmail');
+
+		window.open('https://www.bing.com/search?q=google+meet');
+
+		window.open('https://www.bing.com/search?q=google+chat');
+
+		window.open('https://www.bing.com/search?q=google+chrome');
+
+		window.open('https://www.bing.com/search?q=android');
+
+		window.open('https://www.bing.com/search?q=chrome+os');
+
+		window.open('https://www.bing.com/search?q=linux');
+
+		window.open('https://www.bing.com/search?q=ubuntu');
+	
+		window.open('https://www.bing.com/search?q=zorin+os');
+		
+	}	
+
+	
+	
+}
+
+</script>
+
+</html>

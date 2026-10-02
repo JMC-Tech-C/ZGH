@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="https://play-lh.googleusercontent.com/lMoItBgdPPVDJsNOVtP26EKHePkwBg-PkuY9NOrc-fumRtTFP4XhpUNk_22syN4Datc=s180-rw">
+	<title>YouTube Player</title>
+	<style>
+	
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	/*background-size: 100%;*/
+	background-color: black;
+	color: #555;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+}
+
+img {
+    border-radius: 13%;
+    border-color: #555;
+}
+
+button {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  padding: 1%;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: none;
+  font-size: 88%;
+  font-style: none;
+  min-width: 20%;
+  border-radius: 13px;
+}
+
+textarea {
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 13px;
+  color: white;
+  font-size: 18px;
+  padding: 3%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input {
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  padding: 1%;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: none;
+  font-size: 18px;
+  font-style: none;
+  min-width: 20%;
+  border-radius: 13px;
+}
+
+/* Style the search field */
+form.bar input[type=text] {
+  padding: 0.4%;
+  font-size: 88%;
+  border: 1px solid white;
+  width: 50%;
+  background: black;
+  color: white;
+  border-radius: 13px;
+}
+
+/* Style the submit button */
+form.bar button {
+  float: left;
+  width: 30%;
+  background: black;
+  color: white;
+  padding: 0.5%;
+  font-size: 88%;
+  border: 1px solid #555;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.bar button:hover {
+  background: black;
+  color: #555;
+}
+
+/* Clear floats */
+form.bar::after {
+  content: "";
+  clear: both;
+  display: table;
+}	
+	
+	</style>
+</head>
+<body>
+
+<br>
+<br>
+<br>
+
+<div style="text-align: center;">
+
+<!-- <iframe width="720" height="480" id="vidYT" src="https://www.youtube.com/embed/Uj2Q3L134mY"> -->
+<iframe width="300" height="200" id="vidYT" style="resize: both; overflow: auto;" allowfullscreen>
+</iframe>
+
+<br>
+<br>
+<br>
+
+<div style="padding: 0% 0% 0% 0%;"> 
+    <input id="inputYTID" placeholder="YouTube ID" style="padding: 15px;"></input>
+	<br>
+	<br>
+    <button onclick="saveInput()" style="padding: 15px;">LOAD</button>
+</div>
+
+</div>
+
+<script>
+
+
+// Keys
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '13') {
+        // ENTER
+		saveInput();
+    }
+    else if (e.keyCode == '16') {
+        // SHIFT
+		window.location.reload();
+    }
+}
+
+
+function saveInput() {
+
+    var inputEntered = document.getElementById("inputYTID").value;
+	
+	var vidYT = "https://www.youtube.com/embed/" + inputEntered;
+	
+	document.getElementById("vidYT").src = vidYT;
+
+    // Resident Evil 1 OST	
+	if (document.getElementById("inputYTID").value == "re1" || document.getElementById("inputYTID").value == "Re1") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "RYmhpUgHfKw";
+	}
+    // Resident Evil 2 OST
+	if (document.getElementById("inputYTID").value == "re2" || document.getElementById("inputYTID").value == "Re2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "U9oXw9oDsfs";
+	}
+    // Resident Evil 3 OST
+	if (document.getElementById("inputYTID").value == "re3" || document.getElementById("inputYTID").value == "Re3") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "MVRyma1Scok";
+	}
+    // Resident Evil Code Veronica OST
+	if (document.getElementById("inputYTID").value == "recv" || document.getElementById("inputYTID").value == "Recv") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "fD3NkFUYFQ8";
+	}
+    // Resident Evil 1 Remake OST
+	if (document.getElementById("inputYTID").value == "re1rm" || document.getElementById("inputYTID").value == "Re1rm") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "bqC3hxoHca8";
+	}
+    // Resident Evil 0 OST
+	if (document.getElementById("inputYTID").value == "re0" || document.getElementById("inputYTID").value == "Re0") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "Xuv3ON9bDmg";
+	}
+    // Resident Evil 4 OST
+	if (document.getElementById("inputYTID").value == "re4" || document.getElementById("inputYTID").value == "Re4") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "dTuX1zHyV1s";
+	}
+    // Resident Evil 5 OST
+	if (document.getElementById("inputYTID").value == "re5" || document.getElementById("inputYTID").value == "Re5") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "9_GmGyOjB-E";
+	}
+    // Resident Evil 6 OST
+	if (document.getElementById("inputYTID").value == "re6" || document.getElementById("inputYTID").value == "Re6") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "FrwiPqgm1go";
+	}
+    // Resident Evil 7 OST
+	if (document.getElementById("inputYTID").value == "re7" || document.getElementById("inputYTID").value == "Re7") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "exdVWe9J6Mw";
+	}
+    // Resident Evil 2 Remake OST
+	if (document.getElementById("inputYTID").value == "re2rm" || document.getElementById("inputYTID").value == "Re2rm") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "xbxPrhCAZCs";
+	}
+    // Resident Evil 3 Remake OST
+	if (document.getElementById("inputYTID").value == "re3rm" || document.getElementById("inputYTID").value == "Re3rm") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "zMUfv8H_tGA";
+	}
+    // Resident Evil 3 Remake: Project Resistance OST
+	if (document.getElementById("inputYTID").value == "re3pr" || document.getElementById("inputYTID").value == "Re3pr") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "x-GR7ObCWPQ";
+	}
+    // Resident Evil 8 OST
+	if (document.getElementById("inputYTID").value == "re8" || document.getElementById("inputYTID").value == "Re8") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "mjgfb_HBu84";
+	}
+    // Resident Evil 8 - Shadows of Rose OST
+	if (document.getElementById("inputYTID").value == "re8r" || document.getElementById("inputYTID").value == "Re8r") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "izX2uMcGMEg";
+	}
+    // Resident Evil 4 Remake OST
+	if (document.getElementById("inputYTID").value == "re4rm" || document.getElementById("inputYTID").value == "Re4rm") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "7htEtl-P4J8";
+	}	
+    // Resident Evil Revelations OST
+	if (document.getElementById("inputYTID").value == "rerev" || document.getElementById("inputYTID").value == "Rerev") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "HfhqbSuG4Mo";
+	}
+    // Resident Evil Revelations 2 OST
+	if (document.getElementById("inputYTID").value == "rerev2" || document.getElementById("inputYTID").value == "Rerev2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "QGqNG9budfA";
+	}
+    // Resident Evil The Umbrella Chronicles OST
+	if (document.getElementById("inputYTID").value == "reuc" || document.getElementById("inputYTID").value == "Reuc") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "dSwOR-IWVAk";
+	}
+    // Resident Evil The Darkside Chronicles OST 
+	if (document.getElementById("inputYTID").value == "redc" || document.getElementById("inputYTID").value == "Redc") {
+        document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "o5AUiprFx5Q";		
+	}
+    // Resident Evil Outbreak File 1 OST
+	if (document.getElementById("inputYTID").value == "reo1" || document.getElementById("inputYTID").value == "Reo1") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "fzzHNn6cVlQ";
+	}
+    // Resident Evil Outbreak File 2 OST
+	if (document.getElementById("inputYTID").value == "reo2" || document.getElementById("inputYTID").value == "Reo2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "iJ5SoaHVeK0";
+	}
+    // Resident Evil Deadly Silence OST
+	if (document.getElementById("inputYTID").value == "reds" || document.getElementById("inputYTID").value == "Reds") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "yeVZaX_8Ue8";
+	}
+    // Resident Evil Confidential Report OST
+	if (document.getElementById("inputYTID").value == "recr" || document.getElementById("inputYTID").value == "Recr") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "WAUQn6nIIQ8";
+	}
+    // Resident Evil 0 - Unreleased N64 OST
+	if (document.getElementById("inputYTID").value == "re0n64" || document.getElementById("inputYTID").value == "Re0n64") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "Z4hRbXiedbg";
+	}
+    // Resident Evil 1.5 - Unreleased OST
+	if (document.getElementById("inputYTID").value == "re1.5" || document.getElementById("inputYTID").value == "Re1.5") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "PxWxhe-0zHk";
+	}
+    // Resident Evil 1.5 - Unreleased - Save Room Theme OST
+	if (document.getElementById("inputYTID").value == "resr1.5" || document.getElementById("inputYTID").value == "Resr1.5") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "yVn4FKt_JKk";
+	}
+    // Resident Evil ALL SAVE ROOM THEMES
+	if (document.getElementById("inputYTID").value == "resr" || document.getElementById("inputYTID").value == "Resr") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "vaWnPoAxHjE";
+	}	
+    // Resident Evil 1 SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr1" || document.getElementById("inputYTID").value == "Resr1") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "vb_Bb8JA2pg";
+	}
+    // Resident Evil 1 Director's Cut SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr1dc" || document.getElementById("inputYTID").value == "Resr1dc") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "N87XHQKsQWc";
+	}
+    // Resident Evil 2 SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr2" || document.getElementById("inputYTID").value == "Resr2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "vMz6bhXyNZc";
+	}
+    // Resident Evil 3 SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr3" || document.getElementById("inputYTID").value == "Resr3") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "nblPAN7DaVQ";
+	}
+    // Resident Evil Code Veronica SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resrcv" || document.getElementById("inputYTID").value == "Resrcv") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "z1o_3yBe6Cg";
+	}
+    // Resident Evil 1 Remake SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr1rm" || document.getElementById("inputYTID").value == "Resr1rm") {
+		document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "4pZV3UPmXI4";
+	}
+    // Resident Evil 0 SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr0" || document.getElementById("inputYTID").value == "Resr0") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "xZ6zSCXZ9Us";
+	}
+    // Resident Evil 4 SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr4" || document.getElementById("inputYTID").value == "Resr4") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "zSGPoLCY0xU";
+	}
+    // Resident Evil 4 Rain SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr4r" || document.getElementById("inputYTID").value == "Resr4r") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "3IAiDre7ucQ"; // Alt: hMTKNUXqTMY
+	}
+    // Resident Evil 5 SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr5" || document.getElementById("inputYTID").value == "Resr5") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "Gv7LhRRpKKw";
+	}
+    // Resident Evil 6 SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr6" || document.getElementById("inputYTID").value == "Resr6") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "ZOYDXZ4Y5HU";
+	}
+    // Resident Evil 7 SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr7" || document.getElementById("inputYTID").value == "Resr7") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "koZRzhY321A";
+	}
+    // Resident Evil 7 Rain SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr7r" || document.getElementById("inputYTID").value == "Resr7r") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "AmCPP_PGxQI";
+	}
+    // Resident Evil 2 Remake SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr2rm" || document.getElementById("inputYTID").value == "Resr2rm") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "eFghhLRdjC8";
+	}
+    // Resident Evil 2 Remake B SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr2rmb" || document.getElementById("inputYTID").value == "Resr2rmb") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "oXuZJGLwik4";
+	}
+    // Resident Evil 2 Remake Rain SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr2rmr" || document.getElementById("inputYTID").value == "Resr2rmr") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "cGzBROkv3bk";
+	}	
+    // Resident Evil 3 Remake SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr3rm" || document.getElementById("inputYTID").value == "Resr3rm") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "7wzHmUxpt3g";
+	}
+    // Resident Evil 3 Remake Rain SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr3rmr" || document.getElementById("inputYTID").value == "Resr3rmr") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "JMGbMhdqsV4";
+	}
+    // Resident Evil 8 SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr8" || document.getElementById("inputYTID").value == "Resr8") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "Nv-Xk7odfwY";
+	}
+    // Resident Evil 4 Remake SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resr4rm" || document.getElementById("inputYTID").value == "Resr4rm") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "h3Mx9TUT8No";
+	}	
+    // Resident Evil Revelations SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resrrev" || document.getElementById("inputYTID").value == "Resrrev") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "clu0xUij0Ms";
+	}
+    // Resident Evil Revelations 2 SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resrrev2" || document.getElementById("inputYTID").value == "Resrrev2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "8gR0hyOHGLM";
+	}
+    // Resident Evil Umbrella Chronicles SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resruc" || document.getElementById("inputYTID").value == "Resruc") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "zHZCy8XcV8c";
+	}
+    // Resident Evil Darkside Chronicles SAVE ROOM OST
+	if (document.getElementById("inputYTID").value == "resrdc" || document.getElementById("inputYTID").value == "Resrdc") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "7FNvKdlhv0c";
+	}
+    // Resident Evil 2002 Movie OST
+	if (document.getElementById("inputYTID").value == "rem1" || document.getElementById("inputYTID").value == "Rem1") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "g8jRIvjDf_U";
+	}
+    // Resident Evil: Apocalypse Movie OST
+	if (document.getElementById("inputYTID").value == "rem2" || document.getElementById("inputYTID").value == "Rem2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "VDOlncfQqCI";
+	}
+    // Resident Evil: Extinction Movie OST
+	if (document.getElementById("inputYTID").value == "rem3" || document.getElementById("inputYTID").value == "Rem3") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "N3_L6kTg5-c";
+	}
+    // Resident Evil: Afterlife Movie OST
+	if (document.getElementById("inputYTID").value == "rem4" || document.getElementById("inputYTID").value == "Rem4") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "Y-3OtWkGvCk";
+	}
+    // Resident Evil: Retribution Movie OST
+	if (document.getElementById("inputYTID").value == "rem5" || document.getElementById("inputYTID").value == "Rem5") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "t1pmCgHppAo";
+	}
+    // Resident Evil: The Final Chapter Movie OST
+	if (document.getElementById("inputYTID").value == "rem6" || document.getElementById("inputYTID").value == "Rem6") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "sHl8MBx2TjM";
+	}
+    // Resident Evil: Welcome to Racoon City Movie OST
+	if (document.getElementById("inputYTID").value == "rem7" || document.getElementById("inputYTID").value == "Rem7") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "LD-N_6HlAeQ";
+	}
+    // Resident Evil: Degeneration Movie OST
+	if (document.getElementById("inputYTID").value == "ream1" || document.getElementById("inputYTID").value == "Ream1") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "bhwK_Mhj3Us";
+	}	
+    // Resident Evil: Damnation Movie OST
+	if (document.getElementById("inputYTID").value == "ream2" || document.getElementById("inputYTID").value == "Ream2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "FGUknPm1UPE";
+	}
+    // Resident Evil: Vendetta Movie OST
+	if (document.getElementById("inputYTID").value == "ream3" || document.getElementById("inputYTID").value == "Ream3") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "0nD2UOHWwKo";
+	}
+    // Resident Evil: Death Island Movie OST
+	if (document.getElementById("inputYTID").value == "ream4" || document.getElementById("inputYTID").value == "Ream4") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "eP2gy-6c94c";
+	}
+    // Resident Evil 1 - Pachislot OST
+	if (document.getElementById("inputYTID").value == "re1p" || document.getElementById("inputYTID").value == "Re1p") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "C5wfQssUCRY";
+	}
+    // Resident Evil 5 - Pachislot OST
+	if (document.getElementById("inputYTID").value == "re5p" || document.getElementById("inputYTID").value == "Re5p") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "u7TMGvZ_B2k";
+	}
+    // Resident Evil 6 - Pachislot OST
+	if (document.getElementById("inputYTID").value == "re6p" || document.getElementById("inputYTID").value == "Re6p") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "YOtpo23rrN8";
+	}
+    // Resident Evil 7 - Pachislot OST
+	if (document.getElementById("inputYTID").value == "re7p" || document.getElementById("inputYTID").value == "Re7p") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "FEbPZxvsL-4";
+	}
+    // Resident Evil 2 Remake - Pachislot OST
+	if (document.getElementById("inputYTID").value == "re2rmp" || document.getElementById("inputYTID").value == "Re2rmp") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "iez2cDqzyc4";
+	}
+    // Resident Evil Revelations - Pachislot OST
+	if (document.getElementById("inputYTID").value == "rerevp" || document.getElementById("inputYTID").value == "Rerevp") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "Yg1WZHQGfUA";
+	}
+    // Silent Hill 1 OST
+	if (document.getElementById("inputYTID").value == "sh1" || document.getElementById("inputYTID").value == "Sh1") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "BKkvrvYXeYI";
+	} 
+    // Silent Hill 2 OST
+	if (document.getElementById("inputYTID").value == "sh2" || document.getElementById("inputYTID").value == "Sh2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "crMwnJUi_nc";
+	}  
+    // Silent Hill 3 OST
+	if (document.getElementById("inputYTID").value == "sh3" || document.getElementById("inputYTID").value == "Sh3") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "yfJAooq3mTg";
+	}
+    // Silent Hill 4 OST
+	if (document.getElementById("inputYTID").value == "sh4" || document.getElementById("inputYTID").value == "Sh4") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "4R5ftu5oYuM";
+	} 
+    // Silent Hill 5 Homecoming OST
+	if (document.getElementById("inputYTID").value == "sh5" || document.getElementById("inputYTID").value == "Sh5") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "mV3mjOWw4Do"; // Alt: P4mcH_JkuCQ
+	}
+    // Silent Hill Origins OST
+	if (document.getElementById("inputYTID").value == "sh0" || document.getElementById("inputYTID").value == "Sh0") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "gwNFXVbeitI";
+	}  	
+    // Silent Hill Shattered Memories OST
+	if (document.getElementById("inputYTID").value == "shsm" || document.getElementById("inputYTID").value == "Shsm") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "dMoIKOlcaeQ";		
+	}
+    // Silent Hill Downpour OST
+	if (document.getElementById("inputYTID").value == "shdp" || document.getElementById("inputYTID").value == "Shdp") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "ch1tmLjR1vw"; // Alt: ubzDekxWvw4 hHfkVZ3t0MU
+	}
+    // Silent Hill 2 Remake OST
+	if (document.getElementById("inputYTID").value == "sh2rm" || document.getElementById("inputYTID").value == "Sh2rm") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "oqlWrMImWGY";
+	}
+    // Silent Hill 2 Remake Extra Edition OST
+	if (document.getElementById("inputYTID").value == "sh2rmee" || document.getElementById("inputYTID").value == "Sh2rmee") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "VQKgDiBSAso";
+	}	
+    // Silent Hill Book of Memories OST
+	if (document.getElementById("inputYTID").value == "shbom" || document.getElementById("inputYTID").value == "Shbom") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "w5tUvCHbMvg";
+	}
+    // Silent Hill Vocal Tracks
+	if (document.getElementById("inputYTID").value == "shv" || document.getElementById("inputYTID").value == "Shv") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "HLr6syULNFU";
+	}
+    // Silent Hill The Short Message
+	if (document.getElementById("inputYTID").value == "shtsm" || document.getElementById("inputYTID").value == "Shtsm") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "vbAUZJv0myg";
+	}	
+    // Silent Hill Ascension Lofi
+	if (document.getElementById("inputYTID").value == "shal" || document.getElementById("inputYTID").value == "Shal") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "6Hr5-6k5foM";
+	}
+    // Silent Hill Ascension
+	if (document.getElementById("inputYTID").value == "sha" || document.getElementById("inputYTID").value == "Sha") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "bdiHa0JT6BE";
+	}
+    // Silent Hill P.T.
+	if (document.getElementById("inputYTID").value == "shpt" || document.getElementById("inputYTID").value == "Shpt") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "c2MPDcXkMwg";
+	}
+    // Silent Hill Pachislot (2015)
+	if (document.getElementById("inputYTID").value == "shp2015" || document.getElementById("inputYTID").value == "Shp2015") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "h-mj_Yl9qL0";
+	}
+    // Mary Elizabeth McGlynn (1996-2021)
+	if (document.getElementById("inputYTID").value == "memg" || document.getElementById("inputYTID").value == "Memg") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "V4JuyiqHuq4";
+	}
+    // Death Stranding OST
+	if (document.getElementById("inputYTID").value == "ds" || document.getElementById("inputYTID").value == "Ds") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "NRsvwTydwJo";
+	}	
+    // GYLT OST
+	if (document.getElementById("inputYTID").value == "gylt" || document.getElementById("inputYTID").value == "Gylt") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "X1VrC9x5KFo";
+	}
+	// Red Steel OST	
+	if (document.getElementById("inputYTID").value == "redsteel" || document.getElementById("inputYTID").value == "Redsteel") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "Wh9EwKJZgRE";
+	}
+	// Red Steel 2 OST	
+	if (document.getElementById("inputYTID").value == "redsteel2" || document.getElementById("inputYTID").value == "Redsteel2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "gpuB7oXT7vk";
+	}	
+	// Zombi U OST 
+	if (document.getElementById("inputYTID").value == "zombiu" || document.getElementById("inputYTID").value == "Zombiu") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "BKpKuRqTqL8";
+	}
+	// The Evil Within OST 
+	if (document.getElementById("inputYTID").value == "ew1" || document.getElementById("inputYTID").value == "Ew1") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "83fPR5S7Q3g";
+	}
+	// The Evil Within 2 OST 
+	if (document.getElementById("inputYTID").value == "ew2" || document.getElementById("inputYTID").value == "Ew2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "BygV8yxehL0";
+	}
+	// The Legend of Zelda: A Link To The Past OST 
+	if (document.getElementById("inputYTID").value == "tlozalttp" || document.getElementById("inputYTID").value == "Tlozalttp") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "85u34SUh05Y";
+	}
+	// The Legend of Zelda: Ocarina of Time OST 
+	if (document.getElementById("inputYTID").value == "tlozoot" || document.getElementById("inputYTID").value == "Tlozoot") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "sIiEi96USlo";
+	}
+	// The Legend of Zelda: The Wind Waker OST 
+	if (document.getElementById("inputYTID").value == "tlozww" || document.getElementById("inputYTID").value == "Tlozww") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "AQm5wxT7BGM";
+	}
+	// The Legend of Zelda: Twilight Princess OST 
+	if (document.getElementById("inputYTID").value == "tloztp" || document.getElementById("inputYTID").value == "Tloztp") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "L3ZJDKNQe3g";
+	}
+	// The Legend of Zelda: Skyward Sword OST 
+	if (document.getElementById("inputYTID").value == "tlozss" || document.getElementById("inputYTID").value == "Tlozss") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "XBJTgZJ61Io";
+	}
+	// The Legend of Zelda: Breath of The Wild OST 
+	if (document.getElementById("inputYTID").value == "tlozbotw" || document.getElementById("inputYTID").value == "Tlozbotw") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "RbbwaWPJcCs";
+	}
+	// The Legend of Zelda: Tears of The Kingdom OST 
+	if (document.getElementById("inputYTID").value == "tloztotk" || document.getElementById("inputYTID").value == "Tloztotk") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "F_ICsY-cILU";
+	}	
+	// The Legend of Zelda: A Link Between Worlds OST 
+	if (document.getElementById("inputYTID").value == "tlozalbw" || document.getElementById("inputYTID").value == "Tlozalbw") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "Wukf7ZuXMKw";
+	}
+	// The Legend of Zelda: Link's Awakening OST 
+	if (document.getElementById("inputYTID").value == "tlozla" || document.getElementById("inputYTID").value == "Tlozla") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "QAFA7Fzdj90";
+	}
+	// The Legend of Zelda: Echoes of Wisdom OST 
+	if (document.getElementById("inputYTID").value == "tlozeow" || document.getElementById("inputYTID").value == "Tlozeow") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "TiTZm-0oDp0";
+	}	
+	// Zombies Ate my Neighbors Full OST 
+	if (document.getElementById("inputYTID").value == "zamn" || document.getElementById("inputYTID").value == "Zamn") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "FXZYuclahkk";
+	}
+	// [SEGA Genesis Music] Zombies Ate My Neighbors OST 
+	if (document.getElementById("inputYTID").value == "zamns" || document.getElementById("inputYTID").value == "Zamns") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "hb084d7dGz8";
+	}
+	// Ghoul Patrol Full OST 
+	if (document.getElementById("inputYTID").value == "gp" || document.getElementById("inputYTID").value == "Gp") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "In6FiD7Z-0s";
+	}
+	// Jurassic Park Full OST 
+	if (document.getElementById("inputYTID").value == "jp" || document.getElementById("inputYTID").value == "Jp") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "N99FEFYofdU";
+	}
+	// Super Bomberman 2 Full OST 
+	if (document.getElementById("inputYTID").value == "sb2" || document.getElementById("inputYTID").value == "Sb2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "BSKHtlnS5RI";
+	}
+	// Super Mario World Full OST 
+	if (document.getElementById("inputYTID").value == "smw" || document.getElementById("inputYTID").value == "Smw") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "CyVUS2HnznM";
+	}
+	// Super Mario Kart Full OST 
+	if (document.getElementById("inputYTID").value == "smk" || document.getElementById("inputYTID").value == "Smk") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "wWHL1hMv4gs";
+	}	
+	// Donkey Kong Country Full OST 
+	if (document.getElementById("inputYTID").value == "dkc" || document.getElementById("inputYTID").value == "Dkc") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "TwYwYiVPVHE";
+	}
+	// Star Fox / Star Wing Full OST 
+	if (document.getElementById("inputYTID").value == "sw" || document.getElementById("inputYTID").value == "Sw") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "N4WtL9w9jVo";
+	}
+	// Soul Calibur 2 Full OST 
+	if (document.getElementById("inputYTID").value == "sc2" || document.getElementById("inputYTID").value == "Sc2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "3rBd3LohPhk";
+	}
+	// Metal Gear Solid Revengence Boss Themes OST 
+	if (document.getElementById("inputYTID").value == "mgsr" || document.getElementById("inputYTID").value == "Mgsr") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "DUEjbW4OKEU";
+	}	
+	// DOOM (1993) OST 
+	if (document.getElementById("inputYTID").value == "Doom" || document.getElementById("inputYTID").value == "doom") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "TVVQLGDp9Ek";
+	}	
+	// Portal OST 
+	if (document.getElementById("inputYTID").value == "Portal" || document.getElementById("inputYTID").value == "portal") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "Kgny67NTtw0";
+	}
+	// Portal 2 OST 
+	if (document.getElementById("inputYTID").value == "Portal2" || document.getElementById("inputYTID").value == "portal2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "d-a8jZgqFh0";
+	}
+	// Terraria OST 
+	if (document.getElementById("inputYTID").value == "Terraria" || document.getElementById("inputYTID").value == "terraria") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "DpFwYvwWBWg";
+	}
+	// Broforce OST 
+	if (document.getElementById("inputYTID").value == "Bro" || document.getElementById("inputYTID").value == "bro") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "y7FeeKWVi5Q";
+	}
+	// Broforce USA Theme OST 
+	if (document.getElementById("inputYTID").value == "Usa" || document.getElementById("inputYTID").value == "usa") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "hjMD6yBF1Z0";
+	}
+	// Dead Space OST 
+	if (document.getElementById("inputYTID").value == "Ds1" || document.getElementById("inputYTID").value == "ds1") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "XVOm9uY03fs";
+	}	
+	// Dead Space 2 OST 
+	if (document.getElementById("inputYTID").value == "Ds2" || document.getElementById("inputYTID").value == "ds2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "4k485wbOBR4";
+	}
+	// Dead Space 3 OST 
+	if (document.getElementById("inputYTID").value == "Ds3" || document.getElementById("inputYTID").value == "ds3") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "ZlnfO8liJvY";
+	}
+	// Devil May Cry DMC Part 1 OST 
+	if (document.getElementById("inputYTID").value == "Dmcdmc" || document.getElementById("inputYTID").value == "dmcdmc") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "iU976kGLD_s";
+	}
+	// Devil May Cry DMC Part 2 OST 
+	if (document.getElementById("inputYTID").value == "Dmcdmc2" || document.getElementById("inputYTID").value == "dmcdmc2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "0z0cNuH6DPI";
+	}
+	// The House of The Dead: Overkill OST 
+	if (document.getElementById("inputYTID").value == "Hotdo" || document.getElementById("inputYTID").value == "hotdo") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "YqgMEVHpRKk";
+	}
+	// Obscure 2: The Aftermath OST 
+	if (document.getElementById("inputYTID").value == "Obscure2" || document.getElementById("inputYTID").value == "obscure2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "NF2HZRoRMYY";
+	}
+	// Cold Fear OST 
+	if (document.getElementById("inputYTID").value == "Cf" || document.getElementById("inputYTID").value == "cf") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "wK-0bvXgn3Q";
+	}
+	// Cold Fear: Safe Area OST 
+	if (document.getElementById("inputYTID").value == "Cfsa" || document.getElementById("inputYTID").value == "cfsa") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "IZktj2yqWAM";
+	}
+	// Dead Rising 1 OST 
+	if (document.getElementById("inputYTID").value == "Dr1" || document.getElementById("inputYTID").value == "dr1") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "qxBuHa6fAO4";
+	}
+	// Dead Rising 2 OST 
+	if (document.getElementById("inputYTID").value == "Dr2" || document.getElementById("inputYTID").value == "dr2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "xOnATP5BsVI";
+	}
+	// GoldenEye 007: Reload OST 
+	if (document.getElementById("inputYTID").value == "007ger" || document.getElementById("inputYTID").value == "007ger") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "mcF4NHHTYyM";
+	}
+	// Manhunt 2 OST 
+	if (document.getElementById("inputYTID").value == "Mh2" || document.getElementById("inputYTID").value == "mh2") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "iWNWfeCxHDc";
+	}
+	// Bully OST 
+	if (document.getElementById("inputYTID").value == "Bully" || document.getElementById("inputYTID").value == "bully") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "V-FYmDeiF2M";
+	}
+	// Fatal Frame 2 Wii OST 
+	if (document.getElementById("inputYTID").value == "Ff2w" || document.getElementById("inputYTID").value == "ff2w") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "gaCHVQmmHmc";
+	}
+	// Fatal Frame: Maiden Of Black Water OST 
+	if (document.getElementById("inputYTID").value == "Ffmobw" || document.getElementById("inputYTID").value == "ffmobw") {
+	    document.getElementById("vidYT").src = "https://www.youtube.com/embed/" + "AismKnvVEfk";
+	}
+	
+}
+  	
+</script>
+
+</body>
+
+</html>	
